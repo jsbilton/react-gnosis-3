@@ -1,5 +1,5 @@
 const React = require('react')
-const R = require('ramda')
+const { pluck } = require('ramda')
 
 const dbUrl = process.env.REACT_APP_DB
 const PouchDB = require('pouchdb-http')
@@ -16,7 +16,7 @@ const Resources = React.createClass({
             if (e)
                 return this.setState({error: e.message})
             this.setState({
-                resources: R.pluck('doc', r.rows)
+                resources: pluck('doc', r.rows)
             })
         })
     },
